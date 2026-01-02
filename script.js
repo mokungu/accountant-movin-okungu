@@ -29,3 +29,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+// Contact Form Handling
+const contactForm = document.querySelector('.contact-form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const fromEmail = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        const subject = `New Contact from Website: ${name}`;
+        const body = `Name: ${name}%0D%0AEmail: ${fromEmail}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+
+        // Open default email client
+        window.location.href = `mailto:MOKUNGU39@GMAIL.COM?subject=${encodeURIComponent(subject)}&body=${body}`; // body is manually encoded above for newlines
+    });
+}
